@@ -1,0 +1,13 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/modules.xml
+/projectSettingsUpdater.xml
+/.idea.QualiumSystemTestTask.iml
+/contentModel.xml
+# Datasource local storage ignored files
+/../../../../../../../:\work\git\QualiumSystemTestTask\.idea\.idea.QualiumSystemTestTask\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
