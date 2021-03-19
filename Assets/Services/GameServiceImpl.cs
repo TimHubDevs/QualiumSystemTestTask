@@ -2,6 +2,7 @@
 
 public class GameServiceImpl : GameService
 {
+    private GameObject timer;
     private NavigatorService getNavigation()
     {
         return MainDependencyImpl.getInstance().GetServiceManager().GetNavigatorService();
@@ -17,6 +18,7 @@ public class GameServiceImpl : GameService
     public void openAskMenu()
     {
         var askMenu = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefab/AskMenu"));
+        timer.GetComponentInChildren<TimerManager>().EndTimer();
         getNavigation().addActionForClose(() => MonoBehaviour.Destroy(askMenu));
     }
 
@@ -24,6 +26,11 @@ public class GameServiceImpl : GameService
     {
         getNavigation().closeAll();
         var game = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefab/Game"));
-        getNavigation().addActionForClose(() => MonoBehaviour.Destroy(game));
+        timer = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefab/Timer"));
+        getNavigation().addActionForClose(() =>
+        {
+            MonoBehaviour.Destroy(game);
+            MonoBehaviour.Destroy(timer);
+        });
     }
 }
