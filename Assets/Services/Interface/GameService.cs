@@ -5,4 +5,8 @@
     void openAskMenu();
 
     void StartNewGame();
+
+    void SaveRecord(float value);
+
+    string ShowRecord();
 }

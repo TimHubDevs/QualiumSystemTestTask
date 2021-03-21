@@ -33,4 +33,15 @@ public class GameServiceImpl : GameService
             MonoBehaviour.Destroy(timer);
         });
     }
+
+    public void SaveRecord(float value)
+    {
+        PlayerPrefs.SetFloat("score", value);
+    }
+
+    public string ShowRecord()
+    {
+        string record = PlayerPrefs.GetFloat("score").ToString();
+        return record;
+    }
 }

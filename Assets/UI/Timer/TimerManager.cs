@@ -27,6 +27,7 @@ public class TimerManager : MonoBehaviour
     public void EndTimer()
     {
         timerGoing = false;
+        MainDependencyImpl.getInstance().GetServiceManager().GetGameService().SaveRecord(timePlaying.);
     }
 
     private IEnumerator UpdateTimer()
@@ -35,7 +36,7 @@ public class TimerManager : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
-            string timePlayingStr = "Time:\n" + timePlaying.ToString("mm':'ss'.'ff");
+            string timePlayingStr = "Time:\n" + timePlaying.ToString("mm'.'ss");
             try
             {
                 timeText.text = timePlayingStr;
