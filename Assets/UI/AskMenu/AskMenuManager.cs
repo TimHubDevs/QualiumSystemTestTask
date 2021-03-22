@@ -2,6 +2,7 @@
 
 public class AskMenuManager : MonoBehaviour
 {
+    [SerializeField] public GameObject newRecText;
     public void Restart()
     {
         var prevGame = GameObject.Find("Game(Clone)");

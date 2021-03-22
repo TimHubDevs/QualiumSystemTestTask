@@ -34,6 +34,7 @@ public class TimerManager : MonoBehaviour
         if (elapsedTime > record)
         {
             MainDependencyImpl.getInstance().GetServiceManager().GetGameService().SaveRecord(elapsedTime.ToString());
+            FindObjectOfType<AskMenuManager>().newRecText.SetActive(true);
         }
     }
 
