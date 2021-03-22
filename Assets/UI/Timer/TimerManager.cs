@@ -9,12 +9,15 @@ public class TimerManager : MonoBehaviour
     private TimeSpan timePlaying;
     private bool timerGoing;
     private float elapsedTime;
+    private float record;
 
     void Start()
     {
         timeText = GetComponent<TextMeshProUGUI>();
-        timeText.text = "Time:\n00:00.00";
+        timeText.text = "Time:\n00.00.00";
         BeginTimer();
+        float.TryParse(MainDependencyImpl.getInstance().GetServiceManager().GetGameService().ShowRecord(), out record);
+        Debug.Log(elapsedTime + " is elaps");
     }
 
     public void BeginTimer()
@@ -27,7 +30,11 @@ public class TimerManager : MonoBehaviour
     public void EndTimer()
     {
         timerGoing = false;
-        MainDependencyImpl.getInstance().GetServiceManager().GetGameService().SaveRecord(timePlaying.);
+        Debug.Log(elapsedTime + " is elaps2");
+        if (elapsedTime > record)
+        {
+            MainDependencyImpl.getInstance().GetServiceManager().GetGameService().SaveRecord(elapsedTime.ToString());
+        }
     }
 
     private IEnumerator UpdateTimer()
@@ -36,7 +43,7 @@ public class TimerManager : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
-            string timePlayingStr = "Time:\n" + timePlaying.ToString("mm'.'ss");
+            string timePlayingStr = "Time:\n" + timePlaying.ToString("mm'.'ss'.'ff");
             try
             {
                 timeText.text = timePlayingStr;

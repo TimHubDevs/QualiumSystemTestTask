@@ -6,7 +6,7 @@
 
     void StartNewGame();
 
-    void SaveRecord(float value);
+    void SaveRecord(string value);
 
     string ShowRecord();
 }

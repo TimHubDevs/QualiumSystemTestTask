@@ -3,6 +3,7 @@
 public class GameServiceImpl : GameService
 {
     private GameObject timer;
+
     private NavigatorService getNavigation()
     {
         return MainDependencyImpl.getInstance().GetServiceManager().GetNavigatorService();
@@ -34,14 +35,14 @@ public class GameServiceImpl : GameService
         });
     }
 
-    public void SaveRecord(float value)
+    public void SaveRecord(string value)
     {
-        PlayerPrefs.SetFloat("score", value);
+        PlayerPrefs.SetString("score", value.Substring(0, 4));
     }
 
     public string ShowRecord()
     {
-        string record = PlayerPrefs.GetFloat("score").ToString();
+        string record = PlayerPrefs.GetString("score");
         return record;
     }
 }
