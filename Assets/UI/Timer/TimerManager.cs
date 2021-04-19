@@ -17,7 +17,6 @@ public class TimerManager : MonoBehaviour
         timeText.text = "Time:\n00.00.00";
         BeginTimer();
         float.TryParse(MainDependencyImpl.getInstance().GetServiceManager().GetGameService().ShowRecord(), out record);
-        Debug.Log(elapsedTime + " is elaps");
     }
 
     public void BeginTimer()
@@ -30,7 +29,6 @@ public class TimerManager : MonoBehaviour
     public void EndTimer()
     {
         timerGoing = false;
-        Debug.Log(elapsedTime + " is elaps2");
         if (elapsedTime > record)
         {
             MainDependencyImpl.getInstance().GetServiceManager().GetGameService().SaveRecord(elapsedTime.ToString());
