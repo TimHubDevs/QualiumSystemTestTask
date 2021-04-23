@@ -4,6 +4,7 @@ using UnityEngine;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject recordPanel;
+    [SerializeField] private GameObject marketPanel;
 
     public void StartGame()
     {
@@ -20,5 +21,10 @@ public class MenuManager : MonoBehaviour
         recordPanel.SetActive(true);
         recordPanel.GetComponentInChildren<TextMeshProUGUI>().text =
             MainDependencyImpl.getInstance().GetServiceManager().GetGameService().ShowRecord();
+    }
+    
+    public void ShowMarket()
+    {
+        marketPanel.SetActive(true);
     }
 }
