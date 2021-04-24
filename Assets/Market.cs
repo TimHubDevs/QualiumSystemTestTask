@@ -1,34 +1,35 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class Market : MonoBehaviour
 {
-    [Header("Planes")]
-    [SerializeField]
-    private MarketButton[] Planes;
-
-    private int a = 0;
+    [Header("Planes")] 
+    [SerializeField] private List<Button> planes;
     
-    private Sprite playerPlane;
+    private MarketButton _selectItem;
 
-    private void Update()
+    public MarketButton SelectItem
     {
-        ChangeBackgroundPlane();
+        get { return _selectItem; }
+        set { _selectItem = value;
+            ChangeBackgroundPlane();
+        }
     }
 
     private void ChangeBackgroundPlane()
     {
-        for (int i = 0; i < Planes.Length; i++)
+        if (planes == null)
         {
-            if (Planes[i].isSelected == true)
-            {
-                a++;
-                if (a > 1)
-                {
-                    Planes[i].DeselectColor();
-                    a--;
-                }
-            }
+            Debug.LogError("Planes null");
+            return;
         }
         
+        for(int i = 0; i < planes.Count; i++)
+        {
+            planes[i].GetComponent<MarketButton>().Icon.color = Color.black;
+        }
+        
+        _selectItem.Icon.color = Color.green;
     }
 }

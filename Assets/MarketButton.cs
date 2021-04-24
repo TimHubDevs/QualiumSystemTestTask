@@ -3,23 +3,17 @@ using UnityEngine.UI;
 
 public class MarketButton : MonoBehaviour
 {
-    [SerializeField] private Image Icon;
-    public bool isSelected = false;
-    
-    public void SelectColor()
+    [SerializeField] public Image Icon;
+    [SerializeField] private Market _market;
+    private MarketButton marketButton;
+
+    public MarketButton()
     {
-        Icon.color = Color.green;
-        isSelected = true;
-    }
-    
-    public void DeselectColor()
-    {
-        Icon.color = Color.black;
-        isSelected = false;
+        marketButton = this;
     }
 
-    private void Start()
+    public void Subscribe()
     {
-        GetComponent<Button>().onClick.AddListener(()=>SelectColor());
+        _market.SelectItem = marketButton;
     }
 }
