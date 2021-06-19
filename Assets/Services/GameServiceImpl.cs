@@ -1,8 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class GameServiceImpl : GameService
 {
     private GameObject timer;
+    private Market market;
+    // private List<Plane> planes;
 
     private NavigatorService getNavigation()
     {
@@ -13,6 +17,13 @@ public class GameServiceImpl : GameService
     {
         getNavigation().closeAll();
         var menu = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefab/Menu"));
+        market = menu.GetComponent<Market>();
+        // for (int i = 0; i < planes.Count; i++)
+        // {
+        //     var marketPlane = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefab/PF_MarketPlane"));
+        //     marketPlane.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Sprite/blu-ray");
+        //     market.planes.Add(marketPlane.GetComponent<MarketButton>());
+        // }
         getNavigation().addActionForClose(() => MonoBehaviour.Destroy(menu));
     }
 

@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Market : MonoBehaviour
 {
-    [Header("Planes")] 
-    [SerializeField] private List<Button> planes;
+    public List<MarketButton> planes;
     
     private MarketButton _selectItem;
 
@@ -27,7 +25,7 @@ public class Market : MonoBehaviour
         
         for(int i = 0; i < planes.Count; i++)
         {
-            planes[i].GetComponent<MarketButton>().Icon.color = Color.black;
+            planes[i].Icon.color = Color.black;
         }
         
         _selectItem.Icon.color = Color.green;

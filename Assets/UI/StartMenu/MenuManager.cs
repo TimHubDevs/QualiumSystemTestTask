@@ -6,6 +6,12 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject recordPanel;
     [SerializeField] private GameObject marketPanel;
 
+    private void Start()
+    {
+        marketPanel.SetActive(false);
+        recordPanel.SetActive(false);
+    }
+
     public void StartGame()
     {
         MainDependencyImpl.getInstance().GetServiceManager().GetGameService().StartNewGame();
